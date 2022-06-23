@@ -14,7 +14,8 @@ public class HRApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+		System.out.println("HR App Starts... Initialization App...");
+		Department dep = new Department("Sales");
+		System.out.println(dep.toString());
     }
-    
 }
