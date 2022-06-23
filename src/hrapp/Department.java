@@ -4,6 +4,10 @@
  */
 package hrapp;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 /**
  *
  * @author Rodolfo Pereira de Andrade <rodolfop.andrade@gmail.com>
@@ -11,26 +15,27 @@ package hrapp;
 public class Department {
 
     private String name;
-    private Employee[] emp;
+    private Set<Employee> emps;
 
     public Department(String name) {
         this.name = name;
+        this.emps = new HashSet<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public Employee[] getEmp() {
-        return emp;
+    public Set<Employee> getEmp() {
+        return emps;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setEmp(Employee[] emp) {
-        this.emp = emp;
+    public void setEmp(Set<Employee> emps) {
+        this.emps = emps;
     }
 
     @Override
@@ -38,8 +43,20 @@ public class Department {
         StringBuilder sb = new StringBuilder();
         sb.append("Department{");
         sb.append("name=").append(name);
-        sb.append(", emp=").append(emp);
+        sb.append(", emp=").append(emps);
         sb.append('}');
         return sb.toString();
+    }
+
+    public void addEmp(Employee emp) {
+        if (this.emps.size() < 10) {
+            for (Employee i : emps) {
+                if(i.equals(emp)) System.out.println("Employee already exists in this Department!");
+                return;
+            }
+            this.emps.add(emp);
+        } else {
+            System.out.println("Department already has 10 employees. Impossible adding more.");
+        }
     }
 }

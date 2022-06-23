@@ -15,7 +15,13 @@ public class HRApp {
      */
     public static void main(String[] args) {
 		System.out.println("HR App Starts... Initialization App...");
-		Department dep = new Department("Sales");
-		System.out.println(dep.toString());
+		Department dep1 = new Department("Sales");
+		System.out.println(dep1.toString());
+                
+                Employee emp1 = new Employee(100, "Alex", 5000, dep1);
+                Employee emp2 = new Employee(100, "Alex", 5000, dep1);
+                dep1.addEmp(emp1);
+                dep1.addEmp(emp2);
+                System.out.println(dep1.getEmp().size());
     }
 }

@@ -4,6 +4,8 @@
  */
 package hrapp;
 
+import java.util.Objects;
+
 /**
  *
  * @author Rodolfo Pereira de Andrade <rodolfop.andrade@gmail.com>
@@ -66,9 +68,28 @@ public class Employee {
         return sb.toString();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+          
+    if(this == obj) return true;
+    if(obj == null || obj.getClass()!= this.getClass()) return false;
+          
+        // type casting of the argument. 
+        Employee emp = (Employee) obj;
+        return (this.id == emp.id && this.name.equals(emp.name));
+    }
+    
     /*
     public String getEmpById(int id){
         return getName();
     }
      */
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + this.id;
+        hash = 23 * hash + Objects.hashCode(this.name);
+        return hash;
+    }
 }
