@@ -59,15 +59,17 @@ public class Employee {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Employee{");
-        sb.append("id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", salary=").append(salary);
-        sb.append(", dep=").append(dep);
-        sb.append('}');
+        sb.append("Employee: ").append(id);
+        sb.append(" ").append(name);
+        sb.append(" ").append(salary);
         return sb.toString();
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
           

@@ -4,8 +4,7 @@
  */
 package hrapp;
 
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -19,7 +18,7 @@ public class Department {
 
     public Department(String name) {
         this.name = name;
-        this.emps = new HashSet<>();
+        this.emps = new LinkedHashSet<>();
     }
 
     public String getName() {
@@ -41,22 +40,67 @@ public class Department {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Department{");
-        sb.append("name=").append(name);
-        sb.append(", emp=").append(emps);
-        sb.append('}');
+        sb.append("Department: ").append(name);
         return sb.toString();
     }
 
     public void addEmp(Employee emp) {
         if (this.emps.size() < 10) {
             for (Employee i : emps) {
-                if(i.equals(emp)) System.out.println("Employee already exists in this Department!");
-                return;
+                if (i.equals(emp)) {
+                    System.out.println("Employee already exists in this Department!");
+                    return;
+                }
+
             }
             this.emps.add(emp);
+            //System.out.println("Employee added sucessfully!");
         } else {
             System.out.println("Department already has 10 employees. Impossible adding more.");
         }
+    }
+
+    public void printEmps() {
+        //int i = 0;
+        for (Employee e : emps) {
+            //i++;
+            //if(i > 1) break;
+            System.out.println(e.toString());
+
+            //if(i != null) System.out.println(i);
+            //System.out.println((i.getClass()+1)+"\n"+i.toString()+"\n\n");
+        }
+    }
+
+    public void printTotalEmp() {
+        System.out.println("Total Employees: " + emps.size());
+    }
+
+    public void printTotalSal() {
+        double total = 0;
+        for (Employee e : emps) {
+            total += e.getSalary();
+        }
+        System.out.println("Total Salary: " + total);
+    }
+
+    public void printAvgSal() {
+        double avg = 0;
+        for (Employee e : emps) {
+            avg += e.getSalary();
+        }
+        avg = avg / emps.size();
+        System.out.println("Total Salary: " + avg);
+    }
+
+    public void findById(int id) {
+        for (Employee e : emps) {
+            //System.out.println("Id: "+e.getId());
+            if (e.getId() == id) {
+                System.out.println("Employee " + id + " is " + e.getName());
+                return;
+            }
+        }
+        throw new NullPointerException("Employee didn't found!");
     }
 }
