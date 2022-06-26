@@ -15,13 +15,11 @@ public class Employee {
     private int id;
     private String name;
     private double salary;
-    private Department dep;
 
-    public Employee(int id, String name, double salary, Department dep) {
+    public Employee(int id, String name, double salary) {
         this.id = id;
         this.name = name;
         this.salary = salary;
-        this.dep = dep;
     }
 
     public int getId() {
@@ -36,10 +34,6 @@ public class Employee {
         return salary;
     }
 
-    public Department getDep() {
-        return dep;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -50,10 +44,6 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
-    }
-
-    public void setDep(Department dep) {
-        this.dep = dep;
     }
 
     @Override
@@ -80,18 +70,13 @@ public class Employee {
         Employee emp = (Employee) obj;
         return (this.id == emp.id && this.name.equals(emp.name));
     }
-    
-    /*
-    public String getEmpById(int id){
-        return getName();
-    }
-     */
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + this.id;
-        hash = 23 * hash + Objects.hashCode(this.name);
+        hash = 17 * hash + this.id;
+        hash = 17 * hash + Objects.hashCode(this.name);
+        hash = 17 * hash + (int) (Double.doubleToLongBits(this.salary) ^ (Double.doubleToLongBits(this.salary) >>> 32));
         return hash;
     }
 }

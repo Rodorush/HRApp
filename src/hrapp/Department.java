@@ -76,21 +76,21 @@ public class Department {
         System.out.println("Total Employees: " + emps.size());
     }
 
-    public void printTotalSal() {
+    public double getTotalSal() {
         double total = 0;
         for (Employee e : emps) {
             total += e.getSalary();
         }
-        System.out.println("Total Salary: " + total);
+        return total;
     }
 
-    public void printAvgSal() {
+    public double getAvgSal() {
         double avg = 0;
         for (Employee e : emps) {
             avg += e.getSalary();
         }
         avg = avg / emps.size();
-        System.out.println("Total Salary: " + avg);
+        return avg;
     }
 
     public void findById(int id) {
